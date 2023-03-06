@@ -6,16 +6,64 @@ body {
 }
 
 .container {
-  max-width: 450px;
+  max-width: 450px !important;
   margin: 0 auto;
   padding: 50px 30px;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 
-.form-group {
-  margin-bottom: 20px;
+/* CSS code for navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left:50px;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-nav li {
+  margin: 0;
+}
+
+.navbar-nav li a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.navbar-nav li a:hover {
+  background-color: #eee;
+}
+
+.navbar-nav.ml-auto {
+  margin-left: auto;
+  padding-right:10px;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav.ml-auto {
+    margin-left: 0;
+  }
+}
+
+
 
 label {
   display: block;
@@ -39,11 +87,18 @@ button[type="submit"] {
   width: 100%;
   padding: 10px;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: #2196F3;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+}
+
+.forgot-password {
+  float: right;
+  text-align: right;
+  color:#1877f2;
+  text-decoration:none;
 }
 
 button[type="submit"]:hover {
@@ -53,8 +108,11 @@ button[type="submit"]:hover {
 /* Login page */
 
 .login-form {
-  margin-top: 50px;
+
+   margin: 0 auto;
+
 }
+
 
 .login-form h2 {
   margin-bottom: 30px;
@@ -66,10 +124,109 @@ h2 {
       }
 /* Register page */
 
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+/* style.css */
+
 .register-form {
-  margin-top: 50px;
+  max-width: 450px;
+  margin: 0 auto;
+
+  border-radius: 10px;
 }
 
 .register-form h2 {
-  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  max-width:500px;
+}
+
+.has-error input,
+.has-error select,
+.has-error textarea {
+  border-color: #a94442;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.help-block {
+  color: #a94442;
+}
+
+.form-text {
+  color: #777;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #286090;
+}
+
+a {
+  color: #337ab7;
+}
+/* Success message style */
+.messages .success {
+    color: green;
+}
+
+/* Error message style */
+.messages .error {
+    color: red;
+}
+
+/* Message list style */
+.messages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* add the custom CSS rules here */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }
