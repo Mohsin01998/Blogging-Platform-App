@@ -2,13 +2,87 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
-from .forms import RegisterForm
+from .forms import RegisterForm, CommentForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-from . models import Profile
+from . models import Profile, Post, Category
 import uuid
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+import datetime
+from django.shortcuts import render, get_object_or_404, redirect
+
+
+@login_required(login_url='login')
+def add_comment(request,post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', post_id=post.id)
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment.html', {'form': form})
+
+
+@login_required(login_url='login')
+def post_delete(request,post_id):
+    # Retrieve the post object with the specified ID
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('home')
+    return render(request,'post_delete.html')
+@login_required(login_url='login')
+def post_edit(request,post_id):
+    # Retrieve the post object with the specified ID
+    post = get_object_or_404(Post, pk=post_id)
+
+    if request.method == 'POST':
+         # Retrieve the updated post data from the form
+        title = request.POST.get('title')
+        body = request.POST.get('body')
+        category_name = request.POST.get('category')
+
+        # Check if the category already exists in the database
+        category, created = Category.objects.get_or_create(name=category_name)
+
+        # Update the post's fields with the new values
+        post.title = title
+        post.body = body
+        post.category = category
+        date = datetime.datetime.now()
+        post.date=date
+
+        # Save the updated post to the database
+        post.save()
+        return redirect('home')
+
+    # Render the edit post page with the current post data
+    return render(request, 'post_edit.html', {'post': post})
+@login_required(login_url='login')
+def post_create(request):
+    if request.method=='POST':
+        title=request.POST.get('title')
+        body=request.POST.get('body')
+        category_name = request.POST.get('category')
+        # Check if the category already exists in the database
+        category, created = Category.objects.get_or_create(name=category_name)
+        author=request.user
+        date=datetime.datetime.now()
+        post=Post.objects.create(title=title,body=body,category=category,author=author,date=date)
+        post.save()
+        return redirect('home')
+    return render(request,'post_creation.html')
+@login_required(login_url='login')
+def home(request):
+    user_id=request.user.id
+    post_form=Post.objects.filter(author=user_id)
+    return render(request, 'index.html',{'post_form':post_form})
 
 def send_mail_after_registration(email, token):
     subject='Your accounts need to be verified'
@@ -92,14 +166,10 @@ def token(request):
     return render(request,'account_activation_email.html')
 def success(request):
     return render(request,'verification_complete.html')
-@login_required
-def home(request):
-    return render(request,'index.html')
+
 def about_us(request):
     return render(request,'about_us.html')
 
-def blogs(request):
-    return render(request,'blogs.html')
 
 def contact_us(request):
     return render(request,'contact_us.html')

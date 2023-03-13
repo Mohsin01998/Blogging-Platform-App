@@ -2,6 +2,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from django.core import validators
+from .models import Comment
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model=Comment
+        fields=['body']
+        widgets = {
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Type your comment here...'}),
+        }
+
+
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(help_text='Please enter a valid email address')

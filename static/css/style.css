@@ -12,7 +12,13 @@ body {
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
-
+.index_container{
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 50px 30px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
 /* CSS code for navbar */
 nav {
   display: flex;
@@ -108,7 +114,7 @@ button[type="submit"]:hover {
 /* Login page */
 
 .login-form {
-
+    max-width:450px;
    margin: 0 auto;
 
 }
@@ -179,6 +185,35 @@ button[type="submit"]:hover {
   background-color: #286090;
 }
 
+.post-create-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.post-create-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+select option:first-child {
+  display: none;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+textarea {
+  height: 150px;
+}
+
 a {
   color: #337ab7;
 }
@@ -229,4 +264,82 @@ a {
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
+}
+article {
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  margin-bottom: 10px;
+}
+
+.author, .date, .category {
+  margin-right: 10px;
+}
+
+a {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Contact page */
+
+.contact-form {
+  max-width: 450px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 50px 30px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #286090;
 }

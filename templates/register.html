@@ -3,6 +3,7 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
+<div class="container">
   <div class="register-form">
     <h2>Register</h2>
     {% if messages %}
@@ -32,4 +33,5 @@
     <br>
     <p>Already, have an account? <a href="{% url 'login' %}">Login Now</a>.</p>
   </div>
+</div>
 {% endblock %}

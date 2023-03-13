@@ -3,8 +3,11 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<div class="container">
+
   <div class="login-form">
     <h2>Login</h2>
+     <p style="text-align:center">To create a Blogs you need to login</p>
      {% if messages %}
       {% for message in messages %}
         {% if message.tags == 'error' %}
@@ -29,5 +32,6 @@
     </form>
     <br>
     <p>Don't have an account? <a href="{% url 'register' %}">Sign up</a>.</p>
+  </div>
   </div>
 {% endblock %}

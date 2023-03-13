@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Comment{% endblock %}
+
+{% block content %}
+<div class="comment-form-container">
+    <h2>Add Comment</h2>
+    <form method="post" class="comment-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="body">Body</label>
+            <textarea name="body" id="body" class="form-control" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block css %}
+<style>
+    .comment-form-container {
+        width: 60%;
+        margin: 50px auto;
+    }
+    .comment-form {
+        background-color: #f8f9fa;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    textarea {
+        resize: none;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+</style>
+{% endblock %}
